@@ -46,7 +46,7 @@ const validateRoleName = (req, res, next) => {
     req.body.role_name = role_name.trim();
     next();
   } else {
-    req.role_name = 'student';
+    req.body.role_name = 'student';
     next();
   }
 }
