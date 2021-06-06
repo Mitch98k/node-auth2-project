@@ -5,20 +5,11 @@ function find() {
 }
 
 function findBy(filter) {
-  return db('users').select('user_id', 'username', 'password', 'role_name').join('roles', 'users.role_id', 'roles.role_id').where(filter = filter);
+  return db('users').select('user_id', 'username', 'password', 'role_name').join('roles', 'users.role_id', 'roles.role_id').where(filter).first();
 }
 
 function findById(user_id) {
-  /**
-    You will need to join two tables.
-    Resolves to the user with the given user_id.
-
-    {
-      "user_id": 2,
-      "username": "sue",
-      "role_name": "instructor"
-    }
-   */
+  return db('users').select('user_id', 'username', 'role_name').join('roles', 'users.role_id', 'roles.role_id').where({user_id}).first();
 }
 
 /**
